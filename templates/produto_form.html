@@ -1,0 +1,13 @@
+{% extends "base.html" %}{% block title %}{{ titulo }}{% endblock %}
+{% block content %}
+<div class="row justify-content-center"><div class="col-lg-8"><div class="card shadow-sm"><div class="card-body p-4">
+<h1 class="h2 mb-4">{{ titulo }}</h1>
+<form method="post">
+<div class="mb-3"><label class="form-label">Nome *</label><input class="form-control" name="nome" required maxlength="120" value="{{ produto.nome if produto else '' }}"></div>
+<div class="row"><div class="col-md-6 mb-3"><label class="form-label">Preço (R$) *</label><input class="form-control" type="number" name="preco" min="0" step="0.01" required value="{{ produto.preco if produto else '0.00' }}"></div>
+<div class="col-md-6 mb-3"><label class="form-label">Estoque *</label><input class="form-control" type="number" name="estoque" min="0" step="1" required value="{{ produto.estoque if produto else 0 }}"></div></div>
+<div class="mb-3"><label class="form-label">Categoria</label><input class="form-control" name="categoria" maxlength="80" value="{{ produto.categoria if produto else '' }}"></div>
+<div class="mb-3"><label class="form-label">Descrição</label><textarea class="form-control" name="descricao" rows="4">{{ produto.descricao if produto else '' }}</textarea></div>
+<button class="btn btn-primary">Salvar</button> <a class="btn btn-outline-secondary" href="{{ url_for('produtos') }}">Cancelar</a>
+</form></div></div></div></div>
+{% endblock %}
